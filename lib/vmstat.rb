@@ -63,7 +63,7 @@ module Vmstat
   
   # @!method self.pagesize
   # Fetches pagesize of the current system.
-  # @return [Fixnum] the pagesize of the current system in bytes.
+  # @return [Integer] the pagesize of the current system in bytes.
   # @example
   #   Vmstat.pagesize # => 4096
   
