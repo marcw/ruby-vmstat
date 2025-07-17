@@ -24,12 +24,12 @@ module Vmstat
     # Mainly a wrapper for the {Vmstat::Disk} class constructor. This constructor
     # handles the file system type mapping (based on the magic codes defined in
     # {LinuxDisk::FS_CODES}).
-    # @param [Fixnum] fs the type or magix number of the disk.
+    # @param [Integer] fs the type or magix number of the disk.
     # @param [String] path the path to the disk
-    # @param [Fixnum] block_size size of a file system block
-    # @param [Fixnum] free_blocks the number of free blocks
-    # @param [Fixnum] available_blocks the number of available blocks
-    # @param [Fixnum] total_blocks the number of total blocks
+    # @param [Integer] block_size size of a file system block
+    # @param [Integer] free_blocks the number of free blocks
+    # @param [Integer] available_blocks the number of available blocks
+    # @param [Integer] total_blocks the number of total blocks
     def initialize(fs = nil, path = nil, block_size = nil, free_blocks = nil,
                    available_blocks = nil, total_blocks = nil)
       @fs = fs
