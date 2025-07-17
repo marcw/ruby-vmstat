@@ -1,9 +1,9 @@
 module Vmstat
   class Cpu
-    attr_reader num: Integer
-    attr_reader user: Integer
-    attr_reader system: Integer
-    attr_reader nice: Integer
-    attr_reader idle: Integer
+    attr_accessor num: Integer
+    attr_accessor user: Integer
+    attr_accessor system: Integer
+    attr_accessor nice: Integer
+    attr_accessor idle: Integer
   end
 end

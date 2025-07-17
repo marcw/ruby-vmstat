@@ -32,6 +32,7 @@ module Vmstat
     # @param [Integer] total_blocks the number of total blocks
     def initialize(fs = nil, path = nil, block_size = nil, free_blocks = nil,
                    available_blocks = nil, total_blocks = nil)
+
       @fs = fs
       super(FS_CODES[@fs], path, path, block_size,
             free_blocks, available_blocks, total_blocks)

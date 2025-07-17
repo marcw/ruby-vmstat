@@ -18,7 +18,7 @@ module Vmstat
   autoload :LinuxMemory,      "vmstat/linux_memory"
   autoload :Task,             "vmstat/task"
   autoload :LoadAverage,      "vmstat/load_average"
-  autoload :ProcFS,           "vmstat/procfs"
+  autoload :ProcFS,           "vmstat/proc_fs"
   autoload :Stub,             "vmstat/stub"
   autoload :Snapshot,         "vmstat/snapshot"
   autoload :Solaris,          "vmstat/solaris"

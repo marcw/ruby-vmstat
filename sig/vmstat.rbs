@@ -1,0 +1,14 @@
+module Vmstat
+  VERSION: String
+
+  extend Stub
+
+  def self.snapshot: (?::Array[String] paths) -> untyped
+  def self.ethernet_devices: () -> Array[NetworkInterface]
+  def self.loopback_devices: () -> Array[NetworkInterface]
+
+  def self.pagesize: () -> Integer
+  def self.boot_time: () -> Time
+  def self.network_interfaces: () -> Array[NetworkInterface]
+  def self.memory: () -> Memory
+end

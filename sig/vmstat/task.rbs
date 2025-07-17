@@ -1,9 +1,9 @@
 module Vmstat
   class Task
-    attr_reader virtual_size: Integer
-    attr_reader resident_size: Integer
-    attr_reader user_time_ms: Integer
-    attr_reader system_time_ms: Integer
+    attr_accessor virtual_size: Integer
+    attr_accessor resident_size: Integer
+    attr_accessor user_time_ms: Integer
+    attr_accessor system_time_ms: Integer
 
     def initialize: (virtual_size: Integer, resident_size: Integer, user_time_ms: Integer, system_time_ms: Integer) -> void
                   | (Integer virtual_size, Integer resident_size, Integer user_time_ms, Integer system_time_ms) -> void

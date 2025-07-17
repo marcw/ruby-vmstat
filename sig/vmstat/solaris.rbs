@@ -1,0 +1,14 @@
+module Vmstat
+  module Solaris
+    module ClassMethods
+      def cpu: () -> Array[Cpu]
+      def boot_time: () -> Time
+      def memory: () -> Memory
+      def network_interfaces: () -> Array[NetworkInterface]
+    end
+
+    extend ClassMethods
+
+    def self.included: (untyped base) -> untyped
+  end
+end

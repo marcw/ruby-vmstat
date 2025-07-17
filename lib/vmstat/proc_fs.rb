@@ -30,7 +30,7 @@ module Vmstat
     # @example
     #   Vmstat.cpu # => [#<struct Vmstat::Cpu ...>, #<struct Vmstat::Cpu ...>]
     def cpu
-      cpus = []
+      cpus = [] #: Array[Vmstat::Cpu]
       procfs_file("stat") do |file|
         file.read.scan(CPU_DATA) do |i, user, nice, system, idle|
           cpus << Cpu.new(i.to_i, user.to_i, system.to_i, nice.to_i, idle.to_i)
@@ -125,7 +125,7 @@ module Vmstat
     #   Vmstat.boot_time # => 2012-10-09 18:42:37 +0200
     def boot_time
       raw = procfs_file("uptime") { |file| file.read }
-      Time.now - raw.split(/\s/).first.to_f
+      Time.now - raw.split(/\s/).first.to_f #: Time
     end
 
     # @return [String] the path to the proc file system

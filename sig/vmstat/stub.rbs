@@ -1,0 +1,12 @@
+module Vmstat
+  module Stub
+    def self.boot_time: () -> (nil|Time)
+    def self.cpu: () -> ::Array[Cpu]
+    def self.disk: (String path) -> (nil|Disk)
+    def self.load_average: () -> (nil|LoadAverage)
+    def self.memory: () -> (nil|Memory)
+    def self.network_interfaces: () -> ::Array[NetworkInterface]
+    def self.pagesize: () -> Integer
+    def self.task: () -> (nil|Task)
+  end
+end

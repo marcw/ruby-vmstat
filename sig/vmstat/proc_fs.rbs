@@ -5,12 +5,12 @@ module Vmstat
 
     def boot_time: -> Time
 
-    def cpu: -> [Cpu]
-    def memory: -> [Memory]
-    def network_interfaces: -> [NetworkInterface]
+    def cpu: -> Array[Cpu]
+    def memory: -> Memory
+    def network_interfaces: -> Array[NetworkInterface]
 
     def procfs_path: -> String
-    def procfs_file: -> File
+    def procfs_file: (*String files) ?{ (::File) -> untyped } -> untyped
 
     def task: -> Task
   end

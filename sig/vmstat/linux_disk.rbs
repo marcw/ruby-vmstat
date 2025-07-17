@@ -2,6 +2,8 @@ module Vmstat
   class LinuxDisk < Disk
     FS_CODES: Hash[Integer, Symbol]
 
+    @fs: Integer | nil
+
     def initialize: (Integer? fs, String? path, Integer? block_size, Integer? free_blocks, Integer? available_blocks, Integer? total_blocks) -> void
   end
 end

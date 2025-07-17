@@ -1,7 +1,20 @@
 module Vmstat
   class NetworkInterface
+    attr_accessor name: Symbol
+    attr_accessor in_bytes: Integer
+    attr_accessor in_errors: Integer
+    attr_accessor in_drops: Integer
+    attr_accessor out_bytes: Integer
+    attr_accessor out_errors: Integer
+    attr_accessor type: Integer
+
     ETHERNET_TYPE: Integer
     LOOPBACK_TYPE: Integer
+
+
+
+    def initialize: (name: Symbol, in_bytes: Integer, in_errors: Integer, in_drops: Integer, out_bytes: Integer, out_errors: Integer, type: Integer) -> void
+                  | (Symbol name, Integer in_bytes, Integer in_errors, Integer in_drops, Integer out_bytes, Integer out_errors, Integer type) -> void
 
     def ethernet?: -> bool
     def loopback?: -> bool

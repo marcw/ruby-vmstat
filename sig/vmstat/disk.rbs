@@ -1,15 +1,16 @@
 module Vmstat
   class Disk
-    attr_reader type: Symbol
-    attr_reader origin: String
-    attr_reader mount: String
-    attr_reader block_size: Integer
-    attr_reader free_blocks: Integer
-    attr_reader available_blocks: Integer
-    attr_reader total_blocks: Integer
+    attr_accessor type: Symbol
+    attr_accessor origin: String
+    attr_accessor mount: String
+    attr_accessor block_size: Integer
+    attr_accessor free_blocks: Integer
+    attr_accessor available_blocks: Integer
+    attr_accessor total_blocks: Integer
 
     def initialize: (type: Symbol, origin: String, mount: String, block_size: Integer, free_blocks: Integer, available_blocks: Integer, total_blocks: Integer) -> void
                   | (Symbol type, String origin, String mount, Integer block_size, Integer free_blocks, Integer available_blocks, Integer total_blocks) -> void
+                  | (Symbol? type, String? origin, String? mount, Integer? block_size, Integer? free_blocks, Integer? available_blocks, Integer? total_blocks) -> void
     def free_bytes: -> Integer
     def available_bytes: -> Integer
     def used_bytes: -> Integer

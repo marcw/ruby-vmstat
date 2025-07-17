@@ -29,4 +29,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('guard-rspec')
   gem.add_development_dependency('timecop')
   gem.add_development_dependency('rbs')
+  gem.add_development_dependency('steep')
 end
