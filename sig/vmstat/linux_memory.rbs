@@ -1,0 +1,5 @@
+module Vmstat
+  class LinuxMemory < Memory
+    def available_bytes: -> Integer
+  end
+end

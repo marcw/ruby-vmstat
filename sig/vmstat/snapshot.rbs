@@ -1,0 +1,14 @@
+module Vmstat
+  class Snapshot
+    attr_reader at: Time
+    attr_reader boot_time: Time
+    attr_reader cpus: [Cpu]
+    attr_reader disks: [Disk]
+    attr_reader load_average: LoadAverage
+    attr_reader memory: Memory
+    attr_reader network_interfaces: [NetworkInterface]
+    attr_reader task: Task
+
+    def initialize: (Array[String] path) -> void
+  end
+end

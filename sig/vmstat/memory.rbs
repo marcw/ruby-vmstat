@@ -1,0 +1,17 @@
+module Vmstat
+  class Memory
+    attr_reader page_size: Integer
+    attr_reader wired: Integer
+    attr_reader active: Integer
+    attr_reader inactive: Integer
+    attr_reader free: Integer
+    attr_reader pageins: Integer
+    attr_reader pageouts: Integer
+    
+    def wired_bytes: -> Integer
+    def active_bytes: -> Integer
+    def inactive_bytes: -> Integer
+    def free_bytes: -> Integer
+    def total_bytes: -> Integer
+  end
+end

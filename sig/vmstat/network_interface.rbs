@@ -1,0 +1,9 @@
+module Vmstat
+  class NetworkInterface
+    ETHERNET_TYPE: Integer
+    LOOPBACK_TYPE: Integer
+
+    def ethernet?: -> bool
+    def loopback?: -> bool
+  end
+end

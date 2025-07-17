@@ -1,0 +1,10 @@
+module Vmstat
+  class LoadAverage
+    attr_reader one_minute: Float
+    attr_reader five_minutes: Float
+    attr_reader fifteen_minutes: Float
+
+    def initialize: (one_minute: Float, five_minutes: Float, fifteen_minutes: Float) -> void
+                  | (Float one_minute, Float five_minutes, Float fifteen_minutes) -> void
+  end
+end

@@ -1,0 +1,17 @@
+module Vmstat
+  module ProcFS
+    CPU_DATA: Regexp
+    NET_DATA: Regexp
+
+    def boot_time: -> Time
+
+    def cpu: -> [Cpu]
+    def memory: -> [Memory]
+    def network_interfaces: -> [NetworkInterface]
+
+    def procfs_path: -> String
+    def procfs_file: -> File
+
+    def task: -> Task
+  end
+end

@@ -16,6 +16,7 @@ module Vmstat
   #   Total number of blocks in the file system.
   class Disk < Struct.new(:type, :origin, :mount, :block_size, 
                           :free_blocks, :available_blocks, :total_blocks)
+
     # Calculates the number of free bytes for the file system.
     # @return [Integer] number of free bytes
     def free_bytes

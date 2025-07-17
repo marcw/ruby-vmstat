@@ -17,14 +17,14 @@ module Vmstat
     LOOPBACK_TYPE = 0x18
 
     # Checks if this network interface is a loopback device.
-    # @return [TrueClass, FalseClass] true if it is a loopback device, false
+    # @return [bool] true if it is a loopback device, false
     #   otherwise.
     def loopback?
       type == LOOPBACK_TYPE
     end
 
     # Checks if this network interface is a ethernet device.
-    # @return [TrueClass, FalseClass] true if it is a ethernet device, false
+    # @return [bool] true if it is a ethernet device, false
     #   otherwise.
     def ethernet?
       type == ETHERNET_TYPE
