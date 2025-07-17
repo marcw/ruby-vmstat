@@ -19,11 +19,11 @@ VALUE vmstat_cpu(VALUE self) {
     for(i = 0U; i < numCPUsU; ++i) {
       int pos = CPU_STATE_MAX * i;
       VALUE cpu = rb_funcall(rb_path2class("Vmstat::Cpu"),
-                  rb_intern("new"), 5, ULL2NUM(i),
-                                       ULL2NUM(cpuInfo[pos + CPU_STATE_USER]),
-                                       ULL2NUM(cpuInfo[pos + CPU_STATE_SYSTEM]),
-                                       ULL2NUM(cpuInfo[pos + CPU_STATE_NICE]),
-                                       ULL2NUM(cpuInfo[pos + CPU_STATE_IDLE]));
+                  rb_intern("new"), 5, RB_ULL2NUM(i),
+                                       RB_ULL2NUM(cpuInfo[pos + CPU_STATE_USER]),
+                                       RB_ULL2NUM(cpuInfo[pos + CPU_STATE_SYSTEM]),
+                                       RB_ULL2NUM(cpuInfo[pos + CPU_STATE_NICE]),
+                                       RB_ULL2NUM(cpuInfo[pos + CPU_STATE_IDLE]));
       rb_ary_push(cpus, cpu);
     }
 
@@ -64,13 +64,13 @@ VALUE vmstat_memory(VALUE self) {
 
     if (err == KERN_SUCCESS) {
       memory = rb_funcall(rb_path2class("Vmstat::Memory"),
-               rb_intern("new"), 7, ULL2NUM(pagesize),
-                                    ULL2NUM(vm_stat.active_count),
-                                    ULL2NUM(vm_stat.inactive_count),
-                                    ULL2NUM(vm_stat.wire_count),
-                                    ULL2NUM(vm_stat.free_count),
-                                    ULL2NUM(vm_stat.pageins),
-                                    ULL2NUM(vm_stat.pageouts));
+               rb_intern("new"), 7, RB_ULL2NUM(pagesize),
+                                    RB_ULL2NUM(vm_stat.active_count),
+                                    RB_ULL2NUM(vm_stat.inactive_count),
+                                    RB_ULL2NUM(vm_stat.wire_count),
+                                    RB_ULL2NUM(vm_stat.free_count),
+                                    RB_ULL2NUM(vm_stat.pageins),
+                                    RB_ULL2NUM(vm_stat.pageouts));
     }
 
     err = vm_deallocate(mach_task_self(), (vm_address_t)pagesize, (vm_size_t)host_count);
@@ -95,10 +95,10 @@ VALUE vmstat_task(VALUE self) {
   err = task_info(mach_task_self(), TASK_BASIC_INFO, (task_info_t)&info, &size);
   if (err == KERN_SUCCESS) {
     task = rb_funcall(rb_path2class("Vmstat::Task"),
-           rb_intern("new"), 4, LONG2NUM(info.virtual_size),
-                                LONG2NUM(info.resident_size),
-                                LONG2NUM(info.user_time.seconds * 1000 + info.user_time.microseconds),
-                                LONG2NUM(info.system_time.seconds * 1000 + info.system_time.microseconds));
+           rb_intern("new"), 4, RB_LONG2NUM(info.virtual_size),
+                                RB_LONG2NUM(info.resident_size),
+                                RB_LONG2NUM(info.user_time.seconds * 1000 + info.user_time.microseconds),
+                                RB_LONG2NUM(info.system_time.seconds * 1000 + info.system_time.microseconds));
   } else {
     rb_bug("task_info: %s\n", mach_error_string(err));
   }

@@ -47,13 +47,13 @@ VALUE vmstat_network_interfaces(VALUE self) {
     err = sysctl(ifmib_path, 6, &mibdata, &len, NULL, 0);
     if (err == 0) {
       VALUE device = rb_funcall(rb_path2class("Vmstat::NetworkInterface"),
-                     rb_intern("new"), 7, ID2SYM(rb_intern(mibdata.ifmd_name)),
-                                          ULL2NUM(mibdata.ifmd_data.ifi_ibytes),
-                                          ULL2NUM(mibdata.ifmd_data.ifi_ierrors),
-                                          ULL2NUM(mibdata.ifmd_data.ifi_iqdrops),
-                                          ULL2NUM(mibdata.ifmd_data.ifi_obytes),
-                                          ULL2NUM(mibdata.ifmd_data.ifi_oerrors),
-                                          ULL2NUM(mibdata.ifmd_data.ifi_type));
+                     rb_intern("new"), 7, RB_ID2SYM(rb_intern(mibdata.ifmd_name)),
+                                          RB_ULL2NUM(mibdata.ifmd_data.ifi_ibytes),
+                                          RB_ULL2NUM(mibdata.ifmd_data.ifi_ierrors),
+                                          RB_ULL2NUM(mibdata.ifmd_data.ifi_iqdrops),
+                                          RB_ULL2NUM(mibdata.ifmd_data.ifi_obytes),
+                                          RB_ULL2NUM(mibdata.ifmd_data.ifi_oerrors),
+                                          RB_ULL2NUM(mibdata.ifmd_data.ifi_type));
 
       rb_ary_push(devices, device);
     }

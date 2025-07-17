@@ -17,21 +17,21 @@ VALUE vmstat_disk(VALUE self, VALUE path) {
   if (statfs(StringValueCStr(path), &stat) != -1) {
 #if defined(HAVE_SYS_STATFS_H)
     disk = rb_funcall(rb_path2class("Vmstat::LinuxDisk"),
-           rb_intern("new"), 6, ULL2NUM(stat.f_type),
+           rb_intern("new"), 6, RB_ULL2NUM(stat.f_type),
                                 path,
-                                ULL2NUM(stat.f_bsize),
-                                ULL2NUM(stat.f_bfree),
-                                ULL2NUM(stat.f_bavail),
-                                ULL2NUM(stat.f_blocks));
+                                RB_ULL2NUM(stat.f_bsize),
+                                RB_ULL2NUM(stat.f_bfree),
+                                RB_ULL2NUM(stat.f_bavail),
+                                RB_ULL2NUM(stat.f_blocks));
 #else
     disk = rb_funcall(rb_path2class("Vmstat::Disk"),
            rb_intern("new"), 7, ID2SYM(rb_intern(stat.f_fstypename)),
                                 rb_str_new(stat.f_mntfromname, strlen(stat.f_mntfromname)),
                                 rb_str_new(stat.f_mntonname, strlen(stat.f_mntonname)),
-                                ULL2NUM(stat.f_bsize),
-                                ULL2NUM(stat.f_bfree),
-                                ULL2NUM(stat.f_bavail),
-                                ULL2NUM(stat.f_blocks));
+                                RB_ULL2NUM(stat.f_bsize),
+                                RB_ULL2NUM(stat.f_bfree),
+                                RB_ULL2NUM(stat.f_bavail),
+                                RB_ULL2NUM(stat.f_blocks));
 #endif
   }
 
@@ -53,12 +53,12 @@ VALUE vmstat_disk(VALUE self, VALUE path) {
 
   if (statvfs(StringValueCStr(path), &stat) == 0) {
     disk = rb_funcall(rb_path2class("Vmstat::LinuxDisk"),
-           rb_intern("new"), 6, ID2SYM(rb_intern(stat.f_basetype)),
+           rb_intern("new"), 6, RB_ID2SYM(rb_intern(stat.f_basetype)),
                                 path,
-                                ULL2NUM(stat.f_bsize),
-                                ULL2NUM(stat.f_bfree),
-                                ULL2NUM(stat.f_bavail),
-                                ULL2NUM(stat.f_blocks));
+                                RB_ULL2NUM(stat.f_bsize),
+                                RB_ULL2NUM(stat.f_bfree),
+                                RB_ULL2NUM(stat.f_bavail),
+                                RB_ULL2NUM(stat.f_blocks));
   }
 
   return disk;

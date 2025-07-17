@@ -6,7 +6,7 @@
 #ifndef VMSTAT_PAGESIZE
 #define VMSTAT_PAGESIZE
 VALUE vmstat_pagesize(VALUE self) {
-  return INT2NUM(getpagesize());
+  return RB_INT2NUM(getpagesize());
 }
 #endif
 #endif

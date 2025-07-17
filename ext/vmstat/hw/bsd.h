@@ -22,7 +22,7 @@ VALUE vmstat_cpu(VALUE self) {
   VALUE cpus = rb_ary_new();
   int cpu_count = system_int("hw.ncpu");
   size_t len = sizeof(cpu_time_t) * cpu_count;
-  cpu_time_t * cp_times = ALLOC_N(cpu_time_t, cpu_count);
+  cpu_time_t * cp_times = RB_ALLOC_N(cpu_time_t, cpu_count);
   cpu_time_t * cp_time;
   int i;
   
@@ -30,11 +30,11 @@ VALUE vmstat_cpu(VALUE self) {
     for (i = 0; i < cpu_count; i++) {
       cp_time = &cp_times[i];
       VALUE cpu = rb_funcall(rb_path2class("Vmstat::Cpu"),
-                  rb_intern("new"), 5, ULL2NUM(i),
-                                       ULL2NUM(cp_time->user),
-                                       ULL2NUM(cp_time->system + cp_time->intr),
-                                       ULL2NUM(cp_time->nice),
-                                       ULL2NUM(cp_time->idle));
+                  rb_intern("new"), 5, RB_ULL2NUM(i),
+                                       RB_ULL2NUM(cp_time->user),
+                                       RB_ULL2NUM(cp_time->system + cp_time->intr),
+                                       RB_ULL2NUM(cp_time->nice),
+                                       RB_ULL2NUM(cp_time->idle));
       rb_ary_push(cpus, cpu);
     }
   }
@@ -56,13 +56,13 @@ int system_int(const char * name) {
 #define VMSTAT_MEMORY
 VALUE vmstat_memory(VALUE self) {
   VALUE memory = rb_funcall(rb_path2class("Vmstat::Memory"),
-                 rb_intern("new"), 7, ULL2NUM(system_uint("vm.stats.vm.v_page_size")),
-                                      ULL2NUM(system_uint("vm.stats.vm.v_active_count")),
-                                      ULL2NUM(system_uint("vm.stats.vm.v_wire_count")),
-                                      ULL2NUM(system_uint("vm.stats.vm.v_inactive_count")),
-                                      ULL2NUM(system_uint("vm.stats.vm.v_free_count")),
-                                      ULL2NUM(system_uint("vm.stats.vm.v_vnodepgsin")),
-                                      ULL2NUM(system_uint("vm.stats.vm.v_vnodepgsout")));
+                 rb_intern("new"), 7, RB_ULL2NUM(system_uint("vm.stats.vm.v_page_size")),
+                                      RB_ULL2NUM(system_uint("vm.stats.vm.v_active_count")),
+                                      RB_ULL2NUM(system_uint("vm.stats.vm.v_wire_count")),
+                                      RB_ULL2NUM(system_uint("vm.stats.vm.v_inactive_count")),
+                                      RB_ULL2NUM(system_uint("vm.stats.vm.v_free_count")),
+                                      RB_ULL2NUM(system_uint("vm.stats.vm.v_vnodepgsin")),
+                                      RB_ULL2NUM(system_uint("vm.stats.vm.v_vnodepgsout")));
   return memory;
 }
 
