@@ -23,7 +23,7 @@ def travis?
 end
 
 def docker?
-  File.exists?("/.dockerenv")
+  File.exist?("/.dockerenv")
 end
 
 RSpec.configure do |config|
