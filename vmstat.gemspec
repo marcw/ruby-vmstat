@@ -21,8 +21,10 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.extensions    = ["ext/vmstat/extconf.rb"]
 
+  gem.required_ruby_version = '>= 3.2'
+
   gem.add_development_dependency('rake', '~> 13.0')
-  gem.add_development_dependency('rspec', '~> 3.9')
+  gem.add_development_dependency('rspec', '~> 3.13')
   gem.add_development_dependency('rake-compiler')
   gem.add_development_dependency('guard-rspec')
   gem.add_development_dependency('timecop')
